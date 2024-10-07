@@ -4,6 +4,5 @@ from destinations.models import Destination
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    country = models.CharField(max_length=20)
-    contact_num = models.IntegerField(default=None)
+    image = models.ImageField(upload_to='pics', blank=True, null=True)
     visited_places = models.ManyToManyField(Destination)
