@@ -19,12 +19,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework_simplejwt.views import TokenRefreshView
+from rest_framework.permissions import AllowAny
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('destinations.urls')),
     path('users/', include('users.urls')),
-    path('token/', TokenRefreshView.as_view(), name='token')
+    path('token/', TokenRefreshView.as_view(permission_classes=[AllowAny]), name='token')
 ]
 
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
