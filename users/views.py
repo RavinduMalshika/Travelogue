@@ -134,8 +134,9 @@ def edit(request):
         first_name = request.data.get('first_name')
         last_name = request.data.get('last_name')
         location = request.data.get('location')
+        image = request.FILES.get('image')
 
-        print(username, first_name, last_name, location)
+        print(username, first_name, last_name, location, image)
 
         if user != None:
             if User.objects.filter(username=username).exists() and username!=user.username:
@@ -151,6 +152,7 @@ def edit(request):
 
                 userProfile.user = user
                 userProfile.location = location
+                userProfile.image = image
 
                 userProfile.save()
         else:
