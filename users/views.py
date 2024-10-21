@@ -9,12 +9,12 @@ from .models import UserProfile
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from .serializers import UserSerializer
+from .serializers import UserProfileSerializer
 
 class UserProfileView(APIView):
     def get(self, request):
         user = request.user
-        serializer = UserSerializer(UserProfile.objects.filter(user=user).first(), context={'request': request})
+        serializer = UserProfileSerializer(UserProfile.objects.filter(user=user).first(), context={'request': request})
         user_data = {
             'id': user.id,
             'username': user.username,

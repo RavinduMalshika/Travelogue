@@ -35,6 +35,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'destinations.apps.DestinationsConfig',
     'users.apps.UsersConfig',
+    'reviews.apps.ReviewsConfig',
+    'maps.apps.MapsConfig',
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',

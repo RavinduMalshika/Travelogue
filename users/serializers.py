@@ -3,7 +3,12 @@ from .models import UserProfile, Destination
 from django.contrib.auth.models import User
 
 class UserSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name', 'email']
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
     visited_places = serializers.PrimaryKeyRelatedField(queryset=Destination.objects.all(), many=True)
     wishlist = serializers.PrimaryKeyRelatedField(queryset=Destination.objects.all(), many=True)
 
